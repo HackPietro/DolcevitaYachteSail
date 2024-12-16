@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="1350.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.progetto.ingsw.Controller.BoxPageController">
+   <children>
+      <VBox prefHeight="642.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ScrollPane fx:id="scrollPaneBoxPage" prefHeight="1000.0" prefWidth="1350.0">
+               <content>
+                  <VBox fx:id="totalVboxBoxPage" prefHeight="594.0" prefWidth="1334.0" spacing="15.0">
+                     <padding>
+                        <Insets top="18.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="TOP_CENTER" prefHeight="251.0" prefWidth="1334.0" spacing="55.0">
+                           <children>
+                              <VBox fx:id="vBoxBarca1" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText1" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText1" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca2" alignment="TOP_CENTER" layoutX="212.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText2" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText2" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca3" alignment="TOP_CENTER" layoutX="415.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText3" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText3" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca4" alignment="TOP_CENTER" layoutX="820.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText4" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca5" alignment="TOP_CENTER" layoutX="420.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage5" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText5" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="28.0" prefHeight="286.0" prefWidth="1210.0" spacing="55.0">
+                           <children>
+                              <VBox fx:id="vBoxBarca6" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText6" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage6" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText6" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca7" alignment="TOP_CENTER" layoutX="212.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText7" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage7" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText7" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca8" alignment="TOP_CENTER" layoutX="415.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText8" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage8" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText8" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca9" alignment="TOP_CENTER" layoutX="820.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText9" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage9" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText9" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca10" alignment="TOP_CENTER" layoutX="420.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText10" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage10" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText10" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="324.0" prefHeight="286.0" prefWidth="1210.0" spacing="55.0">
+                           <children>
+                              <VBox fx:id="vBoxBarca11" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText11" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage11" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText11" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca12" alignment="TOP_CENTER" layoutX="212.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText12" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage12" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText12" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca13" alignment="TOP_CENTER" layoutX="415.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText13" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage13" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText13" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca14" alignment="TOP_CENTER" layoutX="820.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText14" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage14" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText14" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="vBoxBarca15" alignment="TOP_CENTER" layoutX="420.0" layoutY="10.0" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
+                                 <children>
+                                    <Text fx:id="titleText15" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.75711059570312">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fx:id="barcaImage15" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text fx:id="priceText15" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="-5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
