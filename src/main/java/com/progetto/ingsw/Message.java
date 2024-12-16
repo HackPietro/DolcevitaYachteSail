@@ -6,6 +6,7 @@ public class Message {
     public final static String recovery_password_error = "Errore nel caricamento della pagina recupero password";
     public final static String load_page_error = "Errore nel caricamento della pagina";
     public final static String wishlist_error = "Errore wishlist";
+    public final static String prenotazioni_error = "Errore prenotazioni";
     public final static String box_page_error = "Errore box page";
     public final static String not_logged_in_error = "Effettuare il login prima di accedere a questa sezione!";
     public final static String privacy_information_error = "Errore nell'apertura di informazioni sulla privacy";
@@ -18,7 +19,9 @@ public class Message {
     public final static String registration_email_exist_error = "L'indirizzo email inserito è associato ad un altro account, effettuare il login";
     public final static String load_barca_view_error = "Errore nel caricamento della pagina della barca";
     public final static String add_wishlist_max_information = "Capienza massima wishlist";
+    public final static String add_prenotazioni_max_information = "Capienza massima prenotazioni";
     public final static String add_wishlist_find_information = "La barca è già presente nella tua wishlist";
+    public final static String add_prenotazioni_find_information = "Hai già una prenotazione per questa barca";
     public final static String upgrade_information = "Effettua ora l'upgrade a premium! Stiamo lavorando per inserire nuovi veicoli selezionabili nel tuo garage per un'esperienza personalizzata.";
     public final static String upgrade_information_error = "Errore nell'apertura delle informazioni sull'upgrade";
     public final static String update_password_success = "La password è stata modificata";

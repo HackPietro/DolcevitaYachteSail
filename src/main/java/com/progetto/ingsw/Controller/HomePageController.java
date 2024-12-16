@@ -135,6 +135,20 @@ public class HomePageController {
         }
     }
 
+    @FXML
+    void prenotazioniAction(MouseEvent event) {
+        try {
+            if (Authentication.getInstance().settedUser()){
+                bottomPane.getChildren().setAll((Node) FXMLLoader.load(Objects.requireNonNull(MainApplication.class.getResource("fxmls/prenotazioni.fxml"))));
+                priceText.setVisible(false);
+            }
+            else {
+                SceneHandler.getInstance().showAlert("Errore", Message.not_logged_in_error, 0);
+            }
+        } catch (Exception e){
+            SceneHandler.getInstance().showAlert("Errore", Message.prenotazioni_error, 0);
+        }
+    }
 
     @FXML
     void barcheAMotoreAction(MouseEvent event) {
