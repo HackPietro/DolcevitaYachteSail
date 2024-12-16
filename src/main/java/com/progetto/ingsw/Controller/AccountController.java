@@ -22,13 +22,19 @@ public class AccountController {
     @FXML
     private Text changePasswordText, nameText1, nameText2, sendReportText, surnameText1, surnameText2, sendedText;
     @FXML
-    private Button changePasswordButton, sendReportButton;
+    private Button changePasswordButton, sendReportButton, aggiungiBarcaButton1;
     @FXML
     private PasswordField passwordField, repeatPasswordField;
     @FXML
     private ScrollPane scrollPaneAccount;
     @FXML
     private TextArea sendReportArea;
+    @FXML
+    private ComboBox<?> categoriaBarcaBox;
+    @FXML
+    private TextArea chiaviBarcaArea, descrizioneBarcaArea;
+    @FXML
+    private TextField nomeBarcaText, prezzoBarcaText;
 
 
     @FXML
