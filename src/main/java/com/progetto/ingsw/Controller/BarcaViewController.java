@@ -12,6 +12,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,14 +21,18 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.sql.SQLException;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 public class BarcaViewController {
     @FXML
-    private Button addToWishlistButton;
+    private Button addToWishlistButton, prenotaButton;
     @FXML
     private TextField amountField;
     @FXML
@@ -40,6 +45,8 @@ public class BarcaViewController {
     private VBox totalVbox, actionBox, vBoxSimilarBarca1, vBoxSimilarBarca2, vBoxSimilarBarca3, vBoxSimilarBarca4, vBoxSimilarBarca5;
     @FXML
     private HBox barcaImageBox;
+    @FXML
+    private ComboBox<Integer> annoButton, giornoButton, meseButton;
 
     @FXML
     void addToWishlistButtonAction(ActionEvent event) {
@@ -107,12 +114,60 @@ public class BarcaViewController {
         }
     }
 
+    void populateComboBoxes() {
+        // Popola il ComboBox dei giorni con valori da 1 a 31
+        giornoButton.getItems().addAll((Integer[]) IntStream.rangeClosed(1, 31).boxed().toArray(Integer[]::new));
+
+        // Popola il ComboBox dei mesi con valori da 1 a 12
+        meseButton.getItems().addAll((Integer[]) IntStream.rangeClosed(1, 12).boxed().toArray(Integer[]::new));
+
+        // Popola il ComboBox degli anni con i valori 2024 e 2025
+        annoButton.getItems().addAll(2024, 2025);
+    }
+
+    @FXML
+    void prenotaButtonAction(ActionEvent event) {
+        Integer giorno = giornoButton.getValue();
+        Integer mese = meseButton.getValue();
+        Integer anno = annoButton.getValue();
+
+        if (giorno == null || mese == null || anno == null) {
+            SceneHandler.getInstance().showAlert("Error", Message.data_error, 0);
+            return;
+        }
+
+        try {
+            LocalDate dataPrenotazione = LocalDate.of(anno, mese, giorno);
+
+            if (dataPrenotazione.isBefore(LocalDate.now())) {
+                SceneHandler.getInstance().showAlert("Error", Message.data_error2, 0);
+                return;
+            }
+
+            User user = Authentication.getInstance().getUser();
+            if (user != null){
+                String email = user.email();
+                String id_bar = BarcaHandler.getInstance().getBarca().id();
+                DBConnection.getInstance().insertPrenotazioneIntoDB(email, id_bar, giorno, mese, anno);
+                SceneHandler.getInstance().showAlert("Conferma", Message.conferma_prenotazione + dataPrenotazione, 1);
+
+            }else{
+                SceneHandler.getInstance().showAlert("Error", Message.not_logged_in_error,0);
+            }
+        } catch (DateTimeException e) {
+            // La data non è valida (ad esempio, 30 febbraio)
+            SceneHandler.getInstance().showAlert("Errore", Message.data_error3, 0);
+        }
+    }
+
+
 
     @FXML
     void initialize(){
         initializeArrays();
         loadBarca();
         loadSimilarBarche();
+        populateComboBoxes();
     }
 
 }

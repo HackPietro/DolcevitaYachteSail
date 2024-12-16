@@ -35,6 +35,8 @@ public class AccountController {
     private TextArea chiaviBarcaArea, descrizioneBarcaArea;
     @FXML
     private TextField nomeBarcaText, prezzoBarcaText;
+    @FXML
+    private VBox aggiungiBarcaVBox;
 
 
     @FXML
@@ -50,14 +52,6 @@ public class AccountController {
             repeatPasswordField.clear();
             SceneHandler.getInstance().showAlert("Cambio password", Message.update_password_success, 1);
         }
-    }
-
-    @FXML
-    void sendReportButtonAction(ActionEvent event) {
-        if (!sendReportArea.getText().isEmpty()){
-            createInfoThread();
-        }
-        sendReportArea.clear();
     }
 
     void createInfoThread(){
@@ -81,6 +75,15 @@ public class AccountController {
     @FXML
     void initialize() throws SQLException, ExecutionException, InterruptedException, TimeoutException {
         loadUserData();
+        if (Authentication.getInstance().getUser().isAdmin()) {
+            // Mostra il VBox per aggiungere barche
+            aggiungiBarcaVBox.setVisible(true);
+            aggiungiBarcaVBox.setManaged(true);
+        } else {
+            // Nasconde il VBox per gli utenti non admin
+            aggiungiBarcaVBox.setVisible(false);
+            aggiungiBarcaVBox.setManaged(false);
+        }
     }
 }
 

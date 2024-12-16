@@ -7,13 +7,13 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.TextField?>
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.progetto.ingsw.Controller.AccountController">
    <children>
       <VBox fx:id="vBoxAccount" layoutY="2.0" prefHeight="353.0" prefWidth="1370.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -101,7 +101,7 @@
                         </VBox>
                         <VBox prefHeight="583.0" prefWidth="658.0">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="170.0" prefWidth="320.0" spacing="15.0">
+                              <VBox fx:id="aggiungiBarcaVBox" alignment="CENTER" prefHeight="170.0" prefWidth="320.0" spacing="15.0">
                                  <children>
                                     <Text fx:id="changePasswordText1" strokeType="OUTSIDE" strokeWidth="0.0" text="Aggiungi una barca" textAlignment="CENTER" wrappingWidth="133.97576904296875">
                                        <font>

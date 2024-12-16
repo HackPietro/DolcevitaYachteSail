@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
@@ -62,6 +63,35 @@
                                                 </Text>
                                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="8.0">
                                                    <children>
+                                                      <Text fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenota qui una visita!" textAlignment="CENTER" wrappingWidth="150.5089111328125">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <HBox prefHeight="26.0" prefWidth="239.0">
+                                                         <children>
+                                                            <ComboBox fx:id="giornoButton" prefHeight="26.0" prefWidth="79.0" promptText="Giorno">
+                                                               <HBox.margin>
+                                                                  <Insets left="33.0" right="10.0" />
+                                                               </HBox.margin></ComboBox>
+                                                            <ComboBox fx:id="meseButton" prefHeight="26.0" prefWidth="71.0" promptText="Mese">
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin></ComboBox>
+                                                            <ComboBox fx:id="annoButton" prefHeight="26.0" prefWidth="71.0" promptText="Anno">
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin></ComboBox>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                      <Button fx:id="prenotaButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="190.0" text="Prenota" onAction="#prenotaButtonAction">
+                                                         <font>
+                                                            <Font size="16.0" />
+                                                         </font>
+                                                      </Button>
                                                       <Button fx:id="addToWishlistButton" mnemonicParsing="false" onAction="#addToWishlistButtonAction" prefHeight="35.0" prefWidth="190.0" text="Aggiungi alla wishlist">
                                                          <font>
                                                             <Font size="16.0" />
@@ -148,7 +178,7 @@
                                     </VBox>
                                     <VBox fx:id="vBoxSimilarBarca5" alignment="TOP_CENTER" prefHeight="286.0" prefWidth="187.0" spacing="4.0">
                                        <children>
-                                          <Text fx:id="titleSimilarBarcaText5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.8">
+                                          <Text fx:id="titleSimilarBarcaText5" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.8">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>

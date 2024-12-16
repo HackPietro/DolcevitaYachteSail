@@ -27,6 +27,10 @@ public class Message {
     public final static String update_password_success = "La password è stata modificata";
     public final static String recovery_password_email_message = "Abbiamo inviato un email all'indirizzo associato al tuo account, segui le istruzioni per proseguire con il reset della password";
     public final static String thread_error = "Errore nell'esecuzione del thread";
+    public final static String data_error = "Seleziona giorno, mese e anno per continuare.";
+    public final static String data_error2 = "La data selezionata è nel passato.";
+    public final static String data_error3 = "La data selezionata non è valida.";
+    public final static String conferma_prenotazione = "Prenotazione effettuata per il ";
 
     public final static String recovery_password_information = """
             Per proseguire con il recupero password, richiedere informazioni/assistenza ecc. inviare un'email ad uno dei seguenti indirizzi:

@@ -369,6 +369,68 @@ public class DBConnection {
         }));
     }
 
+    public CompletableFuture<ArrayList<Barca>> getPrenotazioni(String email) {
+        CompletableFuture<ArrayList<Barca>> future = new CompletableFuture<>();
+        executorService.submit(createDaemonThread(() -> {
+            try {
+                ArrayList<Barca> bar = new ArrayList<>();
+                if (con == null || con.isClosed())
+                    future.complete(bar);
+                String query = "SELECT * from prenotazioni where id_utente=?";
+                PreparedStatement stmt = con.prepareStatement(query);
+                stmt.setString(1, email);
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    CompletableFuture<Barca> future1 = getBarca(rs.getString(2));
+                    Barca b = future1.get(10, TimeUnit.SECONDS);
+                    bar.add(b);
+                }
+                future.complete(bar);
+            } catch (SQLException | ExecutionException | InterruptedException | TimeoutException e) {
+                SceneHandler.getInstance().showAlert("Errore thread", Message.thread_error, 0);
+            }
+        }));
+        return future;
+    }
+
+    public void insertPrenotazioneIntoDB(String email, String id_barca, int giorno, int mese, int anno) {
+        executorService.submit(createDaemonThread(() -> {
+            try {
+                CompletableFuture<ArrayList<Barca>> future = getPrenotazioni(email);
+                ArrayList<Barca> nBar = future.get(10, TimeUnit.SECONDS);
+                boolean find = false;
+                for (Barca id : nBar) {
+                    if (id.id().equals(id_barca)) {
+                        find = true;
+                    }
+                }
+                if (nBar.size() < 6 && !find) {
+                    if (con == null || con.isClosed())
+                        return;
+                    PreparedStatement stmt = con.prepareStatement("INSERT INTO prenotazioni VALUES(?, ?, ?, ?, ?);");
+                    stmt.setString(1, email);
+                    stmt.setString(2, id_barca);
+                    stmt.setInt(3,giorno);
+                    stmt.setInt(4,mese);
+                    stmt.setInt(5,anno);
+                    stmt.execute();
+                    stmt.close();
+                }
+
+                if (nBar.size() >= 6) {
+                    Platform.runLater(() -> SceneHandler.getInstance().showAlert("Attenzione", Message.add_prenotazioni_max_information, 1));
+
+                }
+                if (find) {
+                    Platform.runLater(() -> SceneHandler.getInstance().showAlert("Attenzione", Message.add_prenotazioni_find_information, 1));
+                }
+            } catch (SQLException | ExecutionException | InterruptedException | TimeoutException e) {
+                SceneHandler.getInstance().showAlert("Errore thread", Message.thread_error, 0);
+            }
+        }));
+    }
+
     public void removeSelectedWishlistItem(String id, String email) {
         executorService.submit(createDaemonThread(() -> {
             try {
