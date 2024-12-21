@@ -67,27 +67,29 @@ public class CategoryBoxController {
 
     void addBarca(ArrayList<Barca> barche){
         for (int i = 0; i < barche.size(); i++){
-            String imagePath = "src/main/resources/com/progetto/ingsw/immagini/" + barche.get(i).id() + ".jpg";
-            File imageFile = new File(imagePath);
+            // Verifica che l'indice non superi la dimensione degli array
+            if (i < barcaImagesArray.length) {
+                String imagePath = "src/main/resources/com/progetto/ingsw/immagini/" + barche.get(i).id() + ".jpg";
+                File imageFile = new File(imagePath);
 
-            if (imageFile.exists()) {
-                Image image = new Image(imageFile.toURI().toString()); // Percorso assoluto
-                barcaImagesArray[i].setImage(image);
-            } else {
-                // Immagine di default in caso non esista ancora
-                Image defaultImage = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("immagini/default.jpg")));
-                barcaImagesArray[i].setImage(defaultImage);
+                if (imageFile.exists()) {
+                    Image image = new Image(imageFile.toURI().toString()); // Percorso assoluto
+                    barcaImagesArray[i].setImage(image);
+                } else {
+                    // Immagine di default in caso non esista ancora
+                    Image defaultImage = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("immagini/default.jpg")));
+                    barcaImagesArray[i].setImage(defaultImage);
+                }
+
+                titleTextArray[i].setText(barche.get(i).name());
+                priceArray[i].setText(barche.get(i).price() + "€");
+
+                String id = barche.get(i).id();
+                String category = barche.get(i).category();
+                vBoxArray[i].setOnMouseClicked(event -> loadBarcaViewPage(id, category));
             }
-
-            titleTextArray[i].setText(barche.get(i).name());
-            priceArray[i].setText(barche.get(i).price() + "€");
-
-            String id = barche.get(i).id();
-            String category = barche.get(i).category();
-            vBoxArray[i].setOnMouseClicked(event -> loadBarcaViewPage(id, category));
         }
     }
-
 
 
     @FXML
