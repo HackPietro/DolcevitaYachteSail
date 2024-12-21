@@ -2,6 +2,7 @@ package com.progetto.ingsw.DataBase;
 
 import com.progetto.ingsw.Message;
 import com.progetto.ingsw.Model.Barca;
+import com.progetto.ingsw.Model.Prenotazione;
 import com.progetto.ingsw.Model.User;
 import com.progetto.ingsw.View.SceneHandler;
 import javafx.application.Platform;
@@ -369,43 +370,77 @@ public class DBConnection {
         }));
     }
 
-    public CompletableFuture<ArrayList<Barca>> getPrenotazioni(String email) {
-        CompletableFuture<ArrayList<Barca>> future = new CompletableFuture<>();
+    public CompletableFuture<ArrayList<Prenotazione>> getPrenotazione(String email) {
+        CompletableFuture<ArrayList<Prenotazione>> future = new CompletableFuture<>();
         executorService.submit(createDaemonThread(() -> {
             try {
-                ArrayList<Barca> bar = new ArrayList<>();
+                ArrayList<Prenotazione> pre = new ArrayList<>();
                 if (con == null || con.isClosed())
-                    future.complete(bar);
+                    future.complete(pre);
                 String query = "SELECT * from prenotazioni where id_utente=?";
                 PreparedStatement stmt = con.prepareStatement(query);
                 stmt.setString(1, email);
                 ResultSet rs = stmt.executeQuery();
 
                 while (rs.next()) {
-                    CompletableFuture<Barca> future1 = getBarca(rs.getString(2));
-                    Barca b = future1.get(10, TimeUnit.SECONDS);
-                    bar.add(b);
+                    Prenotazione p = new Prenotazione(email, rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
+                    pre.add(p);
                 }
-                future.complete(bar);
-            } catch (SQLException | ExecutionException | InterruptedException | TimeoutException e) {
+                future.complete(pre);
+            } catch (SQLException e) {
                 SceneHandler.getInstance().showAlert("Errore thread", Message.thread_error, 0);
             }
         }));
         return future;
     }
 
+    public CompletableFuture<ArrayList<Prenotazione>> getPrenotazioniAdmin() {
+        CompletableFuture<ArrayList<Prenotazione>> future = new CompletableFuture<>();
+        executorService.submit(createDaemonThread(() -> {
+            try {
+                ArrayList<Prenotazione> pre = new ArrayList<>();
+                if (con == null || con.isClosed())
+                    future.complete(pre);
+                String query = "SELECT * from prenotazioni ORDER BY anno, mese, giorno;";
+                PreparedStatement stmt = con.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    Prenotazione p = new Prenotazione(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
+                    pre.add(p);
+                }
+                future.complete(pre);
+            } catch (SQLException e) {
+                SceneHandler.getInstance().showAlert("Errore thread", Message.thread_error, 0);
+            }
+        }));
+        return future;
+    }
+
+
+    public String getBarcaName(String id) {
+        try {
+            CompletableFuture<Barca> future = getBarca(id);
+            Barca b = future.get(10, TimeUnit.SECONDS);
+            return b.name();
+        } catch (ExecutionException | InterruptedException | TimeoutException e) {
+            SceneHandler.getInstance().showAlert("Errore thread", Message.thread_error, 0);
+        }
+        return null;
+    }
+
     public void insertPrenotazioneIntoDB(String email, String id_barca, int giorno, int mese, int anno) {
         executorService.submit(createDaemonThread(() -> {
             try {
-                CompletableFuture<ArrayList<Barca>> future = getPrenotazioni(email);
-                ArrayList<Barca> nBar = future.get(10, TimeUnit.SECONDS);
+                CompletableFuture<ArrayList<Prenotazione>> future = getPrenotazione(email);
+                ArrayList<Prenotazione> nPre = future.get(10, TimeUnit.SECONDS);
                 boolean find = false;
-                for (Barca id : nBar) {
-                    if (id.id().equals(id_barca)) {
+                for (Prenotazione id : nPre) {
+                    if (id.id_barca().equals(id_barca)) {
                         find = true;
                     }
                 }
-                if (nBar.size() < 6 && !find) {
+                if (nPre.size() < 6 && !find) {
                     if (con == null || con.isClosed())
                         return;
                     PreparedStatement stmt = con.prepareStatement("INSERT INTO prenotazioni VALUES(?, ?, ?, ?, ?);");
@@ -418,7 +453,7 @@ public class DBConnection {
                     stmt.close();
                 }
 
-                if (nBar.size() >= 6) {
+                if (nPre.size() >= 6) {
                     Platform.runLater(() -> SceneHandler.getInstance().showAlert("Attenzione", Message.add_prenotazioni_max_information, 1));
 
                 }
@@ -430,6 +465,24 @@ public class DBConnection {
             }
         }));
     }
+
+    public void removeSelectedPrenotazioniItem(String id, String id_utente) {
+        executorService.submit(createDaemonThread(() -> {
+            try {
+                if (con == null || con.isClosed())
+                    return;
+                String query = "DELETE FROM prenotazioni where id_barca = ? and id_utente = ?;";
+                PreparedStatement stmt = con.prepareStatement(query);
+                stmt.setString(1, id);
+                stmt.setString(2, id_utente);
+                stmt.execute();
+                stmt.close();
+            } catch (SQLException e) {
+                SceneHandler.getInstance().showAlert("Errore thread", Message.thread_error, 0);
+            }
+        }));
+    }
+
 
     public void removeSelectedWishlistItem(String id, String email) {
         executorService.submit(createDaemonThread(() -> {
@@ -470,5 +523,8 @@ public class DBConnection {
         t.setDaemon(true);
         return t;
     }
+
+
+
 }
 

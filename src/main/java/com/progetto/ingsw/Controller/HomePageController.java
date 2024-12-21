@@ -146,6 +146,7 @@ public class HomePageController {
                 SceneHandler.getInstance().showAlert("Errore", Message.not_logged_in_error, 0);
             }
         } catch (Exception e){
+            e.printStackTrace();
             SceneHandler.getInstance().showAlert("Errore", Message.prenotazioni_error, 0);
         }
     }

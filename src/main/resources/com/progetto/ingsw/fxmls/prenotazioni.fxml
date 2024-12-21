@@ -13,7 +13,7 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.progetto.ingsw.Controller.PrenotazioniController">
    <children>
-      <VBox fx:id="vBoxPrenotazioni" layoutY="24.0" prefHeight="600.0" prefWidth="1337.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="vBoxPrenotazioni1" layoutY="24.0" prefHeight="600.0" prefWidth="1337.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Text fill="#000000e5" strokeType="OUTSIDE" strokeWidth="0.0" text="Le mie prenotazioni" wrappingWidth="250.92471313476562">
                <font>
@@ -98,22 +98,50 @@
                                                 <Font size="30.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="prenotazioniGiornoBar1" layoutX="10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-147.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniMeseBar1" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="-50.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniAnnoBar1" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="147.0" translateY="-100.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Button fx:id="prenotazioniRemoveButton1" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" />
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Text fx:id="dataPrenotazione1" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="60.0" wrappingWidth="175.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniGiornoBar1" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="30.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino1Bar1" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-5.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniMeseBar1" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-40.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino2Bar1" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-75.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniAnnoBar1" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-100.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" translateY="-30.0">
+                                             <children>
+                                                <Text fx:id="utentePrenotatoBar1" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="434.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <Button fx:id="prenotazioniRemoveButton1" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" translateY="-55.0" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -135,22 +163,50 @@
                                                 <Font size="30.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="prenotazioniGiornoBar2" layoutX="157.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-147.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniMeseBar2" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="-50.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniAnnoBar2" layoutX="157.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="147.0" translateY="-100.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Button fx:id="prenotazioniRemoveButton2" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" />
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Text fx:id="dataPrenotazione2" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="60.0" wrappingWidth="175.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniGiornoBar2" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="30.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino1Bar2" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-5.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniMeseBar2" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-40.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino2Bar2" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-75.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniAnnoBar2" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-100.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" translateY="-30.0">
+                                             <children>
+                                                <Text fx:id="utentePrenotatoBar2" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="434.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <Button fx:id="prenotazioniRemoveButton2" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" translateY="-55.0" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -176,22 +232,50 @@
                                                 <Font size="30.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="prenotazioniGiornoBar3" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-147.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniMeseBar3" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="-50.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniAnnoBar3" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="147.0" translateY="-100.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Button fx:id="prenotazioniRemoveButton3" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" />
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Text fx:id="dataPrenotazione3" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="60.0" wrappingWidth="175.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniGiornoBar3" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="30.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino1Bar3" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-5.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniMeseBar3" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-40.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino2Bar3" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-75.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniAnnoBar3" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-100.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" translateY="-30.0">
+                                             <children>
+                                                <Text fx:id="utentePrenotatoBar3" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="434.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <Button fx:id="prenotazioniRemoveButton3" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" translateY="-55.0" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -213,22 +297,50 @@
                                                 <Font size="30.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="prenotazioniGiornoBar4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-147.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniMeseBar4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="-50.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniAnnoBar4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="147.0" translateY="-100.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Button fx:id="prenotazioniRemoveButton4" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" />
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Text fx:id="dataPrenotazione4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="60.0" wrappingWidth="175.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniGiornoBar4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="30.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino1Bar4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-5.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniMeseBar4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-40.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino2Bar4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-75.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniAnnoBar4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-100.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" translateY="-30.0">
+                                             <children>
+                                                <Text fx:id="utentePrenotatoBar4" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="434.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <Button fx:id="prenotazioniRemoveButton4" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" translateY="-55.0" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -254,22 +366,50 @@
                                                 <Font size="30.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="prenotazioniGiornoBar5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-147.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniMeseBar5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="-50.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniAnnoBar5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="147.0" translateY="-100.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Button fx:id="prenotazioniRemoveButton5" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" />
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Text fx:id="dataPrenotazione5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="60.0" wrappingWidth="175.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniGiornoBar5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="30.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino1Bar5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-5.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniMeseBar5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-40.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino2Bar5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-75.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniAnnoBar5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-100.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" translateY="-30.0">
+                                             <children>
+                                                <Text fx:id="utentePrenotatoBar5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="434.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <Button fx:id="prenotazioniRemoveButton5" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" translateY="-55.0" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -291,22 +431,50 @@
                                                 <Font size="30.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="prenotazioniGiornoBar6" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-147.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniMeseBar6" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="-50.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="prenotazioniAnnoBar6" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="147.0" translateY="-100.0" wrappingWidth="139.13671875">
-                                             <font>
-                                                <Font size="30.0" />
-                                             </font>
-                                          </Text>
-                                          <Button fx:id="prenotazioniRemoveButton6" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" />
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Text fx:id="dataPrenotazione6" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="60.0" wrappingWidth="175.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniGiornoBar6" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="30.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino1Bar6" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-5.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniMeseBar6" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-40.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="trattino2Bar6" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-75.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="prenotazioniAnnoBar6" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateX="-100.0" wrappingWidth="50.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" translateY="-30.0">
+                                             <children>
+                                                <Text fx:id="utentePrenotatoBar6" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="434.13671875">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <Button fx:id="prenotazioniRemoveButton6" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="166.0" text="Rimuovi" translateY="-55.0" />
                                        </children>
                                     </VBox>
                                  </children>

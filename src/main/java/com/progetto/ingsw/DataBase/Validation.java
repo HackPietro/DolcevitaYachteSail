@@ -31,7 +31,7 @@ public class Validation {
             return CompletableFuture.completedFuture(false);
         }
         if (!password.equals(repeatedPassword)){
-            SceneHandler.getInstance().showAlert("Passowrd non valida", Message.registration_password_error, 0);
+            SceneHandler.getInstance().showAlert("Password non valida", Message.registration_password_error, 0);
             return CompletableFuture.completedFuture(false);
         }
         if (password.length() < 6 ){
@@ -49,7 +49,7 @@ public class Validation {
 
     public boolean checkPassword(String password, String repeatedPassword){
         if (!password.equals(repeatedPassword)){
-            SceneHandler.getInstance().showAlert("Passowrd non valida", Message.registration_password_error, 0);
+            SceneHandler.getInstance().showAlert("Password non valida", Message.registration_password_error, 0);
             return false;
         }
         if (password.length() < 6 ){

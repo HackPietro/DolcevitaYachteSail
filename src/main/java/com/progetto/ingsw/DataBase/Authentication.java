@@ -16,11 +16,17 @@ public class Authentication {
         return instance;
     }
 
+    public boolean isAdmin(){
+        System.out.println("isAdmin " + this.user.isAdmin());
+        return this.user.isAdmin();
+    }
+
     public void login(User user){
         this.user = user;
     }
 
     public boolean settedUser(){
+        System.out.println("settedUser " + !(this.user == null));
         return !(this.user == null);
     }
 

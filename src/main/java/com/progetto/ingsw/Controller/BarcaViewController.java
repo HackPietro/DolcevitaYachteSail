@@ -125,6 +125,17 @@ public class BarcaViewController {
         annoButton.getItems().addAll(2024, 2025);
     }
 
+
+
+    /*
+    void checkPrenotazione(){
+        String id_bar = BarcaHandler.getInstance().getBarca().id();
+        if(DBConnection.getInstance().checkPrenotazione(id_bar)) {
+            prenotaButton.setDisable(true);
+            prenotaButton.setText("Prenotazione già effettuata");
+        }
+     */
+
     @FXML
     void prenotaButtonAction(ActionEvent event) {
         Integer giorno = giornoButton.getValue();
@@ -150,7 +161,6 @@ public class BarcaViewController {
                 String id_bar = BarcaHandler.getInstance().getBarca().id();
                 DBConnection.getInstance().insertPrenotazioneIntoDB(email, id_bar, giorno, mese, anno);
                 SceneHandler.getInstance().showAlert("Conferma", Message.conferma_prenotazione + dataPrenotazione, 1);
-
             }else{
                 SceneHandler.getInstance().showAlert("Error", Message.not_logged_in_error,0);
             }
@@ -168,6 +178,7 @@ public class BarcaViewController {
         loadBarca();
         loadSimilarBarche();
         populateComboBoxes();
+        //checkPrenotazione();
     }
 
 }
