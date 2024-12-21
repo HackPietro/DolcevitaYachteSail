@@ -108,12 +108,14 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
+                                    <TextField fx:id="idBarcaText" layoutX="10.0" layoutY="44.0" promptText="Inserisci il nome della barca" />
                                     <TextField fx:id="nomeBarcaText" promptText="Inserisci il nome della barca" />
                                     <TextField fx:id="prezzoBarcaText" layoutX="10.0" layoutY="62.0" promptText="Inserisci il prezzo di vendita" />
                                     <TextArea fx:id="descrizioneBarcaArea" prefHeight="105.0" prefWidth="658.0" promptText="Descrivi brevemente la barca" />
                                     <ComboBox fx:id="categoriaBarcaBox" prefHeight="26.0" prefWidth="714.0" promptText="Scegli la categoria" />
                                     <TextArea fx:id="chiaviBarcaArea" prefHeight="105.0" prefWidth="658.0" promptText="Inserisci delle chiavi di ricerca" />
-                                    <Button fx:id="aggiungiBarcaButton1" mnemonicParsing="false" onAction="#changePasswordButtonAction" text="Aggiungi" textAlignment="CENTER">
+                                    <Button fx:id="inserisciFotoBarca" mnemonicParsing="false"  onAction="#inserisciFotoBarcaAction" prefHeight="30.0" prefWidth="76.0" text="Scegli foto" />
+                                    <Button fx:id="aggiungiBarcaButton" mnemonicParsing="false" onAction="#aggiungiBarcaButton1Action" prefHeight="30.0" prefWidth="76.0" text="Aggiungi" textAlignment="CENTER">
                                        <font>
                                           <Font size="14.0" />
                                        </font>

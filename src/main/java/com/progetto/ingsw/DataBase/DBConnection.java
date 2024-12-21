@@ -518,6 +518,37 @@ public class DBConnection {
         }));
     }
 
+    public boolean aggiungiBarca(String idBarca, String nomeBarca, String categoriaBarca, String descrizioneBarca, String chiaviBarca, double prezzoBarca) {
+        try {
+            if (con == null || con.isClosed()) {
+                Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore Database", "Connessione al database non disponibile.", 0));
+                return false;
+            }
+
+            // Prepara la query SQL per inserire una nuova barca
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO barche (id, nome, prezzo, descrizione, categoria, chiavi) VALUES (?, ?, ?, ?, ?, ?);");
+            stmt.setString(1, idBarca);
+            stmt.setString(2, nomeBarca);
+            stmt.setDouble(3, prezzoBarca);
+            stmt.setString(4, descrizioneBarca);
+            stmt.setString(5, categoriaBarca);
+            stmt.setString(6, chiaviBarca);
+
+            // Esegui la query
+            stmt.execute();
+            stmt.close();
+
+            // Mostra un messaggio di successo
+            Platform.runLater(() -> SceneHandler.getInstance().showAlert("Operazione riuscita", "Barca aggiunta con successo.", 1));
+            return true;
+        } catch (SQLException e) {
+            // Gestione degli errori SQL
+            Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore Database", "Impossibile aggiungere la barca: " + e.getMessage(), 0));
+            return false;
+        }
+    }
+
+
     private Thread createDaemonThread(Runnable runnable) {
         Thread t = new Thread(runnable);
         t.setDaemon(true);

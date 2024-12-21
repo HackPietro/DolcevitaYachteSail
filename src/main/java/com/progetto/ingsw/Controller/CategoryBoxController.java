@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
@@ -66,17 +67,27 @@ public class CategoryBoxController {
 
     void addBarca(ArrayList<Barca> barche){
         for (int i = 0; i < barche.size(); i++){
-            String url = "immagini/"+ barche.get(i).id()+".jpg";
-            Image image = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream(url)));
-            barcaImagesArray[i].setImage(image);
+            String imagePath = "src/main/resources/com/progetto/ingsw/immagini/" + barche.get(i).id() + ".jpg";
+            File imageFile = new File(imagePath);
+
+            if (imageFile.exists()) {
+                Image image = new Image(imageFile.toURI().toString()); // Percorso assoluto
+                barcaImagesArray[i].setImage(image);
+            } else {
+                // Immagine di default in caso non esista ancora
+                Image defaultImage = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("immagini/default.jpg")));
+                barcaImagesArray[i].setImage(defaultImage);
+            }
+
             titleTextArray[i].setText(barche.get(i).name());
-            priceArray[i].setText(barche.get(i).price()+"€");
+            priceArray[i].setText(barche.get(i).price() + "€");
 
             String id = barche.get(i).id();
             String category = barche.get(i).category();
             vBoxArray[i].setOnMouseClicked(event -> loadBarcaViewPage(id, category));
         }
     }
+
 
 
     @FXML
