@@ -36,7 +36,7 @@ public class BarcaViewController {
     @FXML
     private TextField amountField;
     @FXML
-    private Text dolcevitaYachteSailText, descriptionField, paymentText, barcaField, titleSimilarBarcaText1, titleSimilarBarcaText2, titleSimilarBarcaText3, titleSimilarBarcaText4, titleSimilarBarcaText5, SimilarBarche;
+    private Text dolcevitaYachteSailText, descriptionField, paymentText, barcaField, titleSimilarBarcaText1, titleSimilarBarcaText2, titleSimilarBarcaText3, titleSimilarBarcaText4, titleSimilarBarcaText5, SimilarBarche , prenotaquiunavisitaText;
     @FXML
     private Text priceText, priceText1, priceText2, priceText3, priceText4, priceText5;
     @FXML

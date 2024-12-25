@@ -1,8 +1,8 @@
 * {
   upperBackgroundColor: #005075;
   bottomBackgroundColor: #d3d3d3;
-  buttonColor: #0477EF;
-  backgroundButtonColor: #035EBD;
+  buttonColor: #005075;
+  backgroundButtonColor: #005075;
   backgroundColor: #d3d3d3;
   textColor: #000000;
   boxColor: #FFFFFF;
@@ -10,7 +10,7 @@
   orange: #ff9900;
   vBoxColor: white;
   hBoxColor: white;
-  blueColor: #0477ef;
+  blueColor: #005075;
   scrollBarColor: #b3b3b3;
   scrollBarHover: #8c8c8c;
 }

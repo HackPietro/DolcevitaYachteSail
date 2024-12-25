@@ -56,6 +56,11 @@
                                        <children>
                                           <VBox fx:id="actionBox" alignment="CENTER" prefHeight="381.0" prefWidth="304.0" spacing="10.0">
                                              <children>
+                                                <Text fx:id="prezzoText" strokeType="OUTSIDE" strokeWidth="0.0" text="Prezzo:" textAlignment="CENTER">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
                                                 <Text fx:id="priceText" strokeType="OUTSIDE" strokeWidth="0.0">
                                                    <font>
                                                       <Font size="30.0" />
@@ -63,7 +68,7 @@
                                                 </Text>
                                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="8.0">
                                                    <children>
-                                                      <Text fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenota qui una visita!" textAlignment="CENTER" wrappingWidth="150.5089111328125">
+                                                      <Text fx:id="prenotaquiunavisitaText" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenota qui una visita!" textAlignment="CENTER" wrappingWidth="150.5089111328125">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -87,7 +92,7 @@
                                                             <Insets />
                                                          </VBox.margin>
                                                       </HBox>
-                                                      <Button fx:id="prenotaButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="190.0" text="Prenota" onAction="#prenotaButtonAction">
+                                                      <Button fx:id="prenotaButton" mnemonicParsing="false" onAction="#prenotaButtonAction" prefHeight="35.0" prefWidth="190.0" text="Prenota">
                                                          <font>
                                                             <Font size="16.0" />
                                                          </font>

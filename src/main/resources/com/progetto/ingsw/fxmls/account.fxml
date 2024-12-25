@@ -103,7 +103,7 @@
                            <children>
                               <VBox fx:id="aggiungiBarcaVBox" alignment="CENTER" prefHeight="170.0" prefWidth="320.0" spacing="15.0">
                                  <children>
-                                    <Text fx:id="changePasswordText1" strokeType="OUTSIDE" strokeWidth="0.0" text="Aggiungi una barca" textAlignment="CENTER" wrappingWidth="133.97576904296875">
+                                    <Text fx:id="aggiungiunabarcaText" strokeType="OUTSIDE" strokeWidth="0.0" text="Aggiungi una barca" textAlignment="CENTER" wrappingWidth="133.97576904296875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -114,12 +114,8 @@
                                     <TextArea fx:id="descrizioneBarcaArea" prefHeight="105.0" prefWidth="658.0" promptText="Descrivi brevemente la barca" />
                                     <ComboBox fx:id="categoriaBarcaBox" prefHeight="26.0" prefWidth="714.0" promptText="Scegli la categoria" />
                                     <TextArea fx:id="chiaviBarcaArea" prefHeight="105.0" prefWidth="658.0" promptText="Inserisci delle chiavi di ricerca" />
-                                    <Button fx:id="inserisciFotoBarca" mnemonicParsing="false"  onAction="#inserisciFotoBarcaAction" prefHeight="30.0" prefWidth="76.0" text="Scegli foto" />
-                                    <Button fx:id="aggiungiBarcaButton" mnemonicParsing="false" onAction="#aggiungiBarcaButton1Action" prefHeight="30.0" prefWidth="76.0" text="Aggiungi" textAlignment="CENTER">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Button>
+                                    <Button fx:id="inserisciFotoBarca" mnemonicParsing="false" onAction="#inserisciFotoBarcaAction" prefHeight="30.0" prefWidth="128.0" text="Scegli foto" />
+                                    <Button fx:id="aggiungiBarcaButton" mnemonicParsing="false" onAction="#aggiungiBarcaButton1Action" prefHeight="30.0" prefWidth="128.0" text="Aggiungi" textAlignment="CENTER" />
                                  </children>
                               </VBox>
                            </children>

@@ -13,14 +13,15 @@
  -fx-background-color: backgroundButtonColor;
 }
 
+#searchButton {
+    -fx-text-fill: black;
+    -fx-background-color: white; /* Colore di sfondo del bottone normale */
+    -fx-cursor: hand;
+}
 
 #searchButton:pressed {
  -fx-scale-x: 0.95;
  -fx-scale-y: 0.95;
-}
-
-#barcheAMotoreText, #barcheAVelaText, #barcheDaPescaText, #barcheSportiveText, #barcheTradizionaliText, #catamaraniText, #gommoniText, #trimaraniText, #textUpgrade, #loginText{
- -fx-fill: white;
 }
 
 #barcheAMotoreText:hover, #barcheAVelaText:hover, #barcheDaPescaText:hover, #barcheSportiveText:hover, #barcheTradizionaliText:hover, #catamaraniText:hover, #gommoniText:hover, #trimaraniText:hover{
@@ -42,10 +43,10 @@
 }
 
 #priceText {
- -fx-fill: orange;
+ -fx-fill: black;
 }
 
-#loginButton, #addCarRequest{
+#loginButton {
  -fx-font-size: 24px;
 }
 
@@ -56,13 +57,13 @@
 
 
 
-#brakesText:hover,#cleanlinessCarText:hover,#cushionsText:hover,#exhaustText:hover,#filtersText:hover,#lightingText:hover,#oilAndLiquidsText:hover,#tyresText:hover {
- -fx-fill: #ff9900; /* Colore arancio per il testo delle label */
+#barcheAMotoreText, #barcheAVelaText, #barcheDaPescaText, #barcheSportiveText, #barcheTradizionaliText, #catamaraniText, #gommoniText, #trimaraniText, #textUpgrade, #loginText{
+ -fx-fill: white; /* Colore arancio per il testo delle label */
  -fx-font-size: 12px; /* Dimensione del carattere 16px per il testo personalizzato */
  -fx-cursor: hand;  /*appare la mano quando il cursore ci va sopra*/
 }
 
-#garageIcon:hover,#accessHbox:hover,#wishlistIcon:hover,#prenotazioniIcon:hover, #logoutImage:hover {/*rimpicciolimento dell'immagine quando il cursore ci va sopra*/
+#accessHbox:hover,#wishlistIcon:hover,#prenotazioniIcon:hover, #logoutImage:hover {
   -fx-scale-x: 0.9;
   -fx-scale-y: 0.9;
   -fx-cursor: hand; /*appare la mano quando il cursore ci va sopra*/
@@ -179,82 +180,24 @@
 
                                                                                            /* FINE RECOVERY PAGE */
 
-                                                                                           /* INIZIO GARAGE*/
-
-
-#hBoxGarage, #vBoxGarage {
- -fx-background-color: backgroundColor;
-}
-
-
-#hBox {
- -fx-background-radius: 15px;
-}
-
-#scrollPaneGarage {
- -fx-background-color: backgroundColor;
- -fx-background-radius: 15px;
-}
-
-#boxAddCar {
- -fx-cursor: hand;
- -fx-background-color: boxColor;
- -fx-background-radius: 15px;
-}
-
-#carText1, #carText2 {
- -fx-font-size: 24px;
-}
-
-#addCarText {
- -fx-font-size: 15px;
-}
-
-#addCarButton {
- -fx-cursor: hand;
- -fx-font-size: 24px;
-}
-
-#clickHereText{
- -fx-fill: blueColor;
-}
-
-.combo-box .list-cell .text{
- -fx-fill: black;
-}
-
-
-                                                                                           /* FINE GARAGE*/
-
                                                                                            /* INIZIO HOMEPAGE BOX */
-
-#buyButton1, #buyButton2, #buyButton3, #buyButton4, #buyButton5, #buyButton6, #buyButton7, #buyButton8, #buyButton9, #buyButton10, #buyButton11, #buyButton12, #buyButton13, #buyButton14, #buyButton15, #buyButton16, #buyButton17, #buyButton18{
- -fx-background-color: purchaseButtonColor;
- -fx-text-fill: textColor;
-}
-
-#buyButton1:hover, #buyButton2:hover, #buyButton3:hover, #buyButton4:hover, #buyButton5:hover, #buyButton6:hover, #buyButton7:hover, #buyButton8:hover, #buyButton9:hover, #buyButton10:hover, #buyButton11:hover, #buyButton12:hover, #buyButton13:hover, #buyButton14:hover, #buyButton15:hover, #buyButton16:hover, #buyButton17:hover, #buyButton18:hover{
- -fx-background-color: purchaseButtonColorHover;
- -fx-text-fill: textColor;
-}
 
 #bottomBoxPage {
  -fx-background-color: upperBackgroundColor;
 }
 
-#changeTheme, #privacyInformation, #generalCondition, #dolcevitaYachteSailInformation {
+#privacyInformation, #generalCondition, #dolcevitaYachteSailInformation {
  -fx-fill: white;
 }
 
-#changeTheme:hover, #privacyInformation:hover, #generalCondition:hover, #dolcevitaYachteSailInformation:hover {
+#privacyInformation:hover, #generalCondition:hover, #dolcevitaYachteSailInformation:hover {
  -fx-cursor: hand;
  -fx-font-size: 11px;
 }
 
-#vBoxProduct1, #vBoxProduct2, #vBoxProduct3, #vBoxProduct4, #vBoxProduct5, #vBoxProduct6, #vBoxProduct7, #vBoxProduct8, #vBoxProduct9, #vBoxProduct10, #vBoxProduct11, #vBoxProduct12, #vBoxProduct13, #vBoxProduct14, #vBoxProduct15 {
+#vBoxBarca1, #vBoxBarca2, #vBoxBarca3, #vBoxBarca4, #vBoxBarca5, #vBoxBarca6, #vBoxBarca7, #vBoxBarca8, #vBoxBarca9, #vBoxBarca10, #vBoxBarca11, #vBoxBarca12, #vBoxBarca13, #vBoxBarca14, #vBoxBarca15 {
  -fx-background-color: vBoxColor;
  -fx-background-radius: 10px;
-
 }
 
 #hBox1, #hBox2, #hBox3, #totalBox {
@@ -271,7 +214,7 @@
  -fx-background-color: backgroundColor;
 }
 
-#vBoxProduct1:hover, #vBoxProduct2:hover, #vBoxProduct3:hover, #vBoxProduct4:hover, #vBoxProduct5:hover, #vBoxProduct6:hover, #vBoxProduct7:hover, #vBoxProduct8:hover, #vBoxProduct9:hover, #vBoxProduct10:hover, #vBoxProduct11:hover, #vBoxProduct12:hover, #vBoxProduct13:hover, #vBoxProduct14:hover, #vBoxProduct15:hover{
+#vBoxBarca1:hover, #vBoxBarca2:hover, #vBoxBarca3:hover, #vBoxBarca4:hover, #vBoxBarca5:hover, #vBoxBarca6:hover, #vBoxBarca7:hover, #vBoxBarca8:hover, #vBoxBarca9:hover, #vBoxBarca10:hover, #vBoxBarca11:hover, #vBoxBarca12:hover, #vBoxBarca13:hover, #vBoxBarca14:hover, #vBoxBarca15:hover{
  -fx-cursor: hand;
 }
 
@@ -279,54 +222,47 @@
  -fx-font-size: 20px;
 }
 
-#sellerText1, #sellerText2, #sellerText3, #sellerText4, #sellerText5, #sellerText6, #sellerText7, #sellerText8, #sellerText9, #sellerText10, #sellerText11, #sellerText12, #sellerText13, #sellerText14, #sellerText15 {
- -fx-font-size: 11px;
-}
-
-
-
-
-
-
                                                                                            /* FINE BOX PAGE */
 
-                                                                                           /* INIZIO PRODUCT VIEW */
-#totalVbox, #scrollPaneProductView {
+
+                                                                                           /* INIZIO BARCA VIEW */
+#totalVbox, #scrollPaneBarcaView {
  -fx-background-color: backgroundColor;
 }
 
-#productImageBox {
+#barcaImageBox {
  -fx-background-color: vBoxColor;
  -fx-background-radius: 10px;
 }
 
-#productField, #priceText {
+#barcaField, #priceText {
  -fx-font-size: 30px;
 }
 
-#descriptionField, #SimilarProducts, #titleSimilarProductText1, #titleSimilarProductText2, #titleSimilarProductText3, #titleSimilarProductText4, #titleSimilarProductText5 {
+#prenotaquiunavisitaText {
+    -fx-fill: green;
+    -fx-font-size: 15px;
+}
+
+#prezzoText {
+    -fx-font-size: 15px;
+}
+
+
+#descriptionField, #SimilarBarche, #titleSimilarBarcaText1, #titleSimilarBarcaText2, #titleSimilarBarcaText3, #titleSimilarBarcaText4, #titleSimilarBarcaText5 {
  -fx-font-size: 20px;
 }
 
-#freeReturnsText, #freeShippingText, #availabilityText, #amountText, #amountField{
+#prenotaButton, #addToWishlistButton{
  -fx-font-size: 16px;
 }
 
-#paymentText, #shippingText, #seller, #secureTransationText, #carDocText, #sellerText {
- -fx-font-size: 12;
-}
-
-#lessButton, #plusButton, #addToCartButton, #addToWishlistButton{
- -fx-font-size: 16px;
- -fx-background-color: purchaseButtonColor;
-}
-
-#vBoxSimilarProduct1, #vBoxSimilarProduct2, #vBoxSimilarProduct3, #vBoxSimilarProduct4, #vBoxSimilarProduct5 {
+#vBoxSimilarBarca1, #vBoxSimilarBarca2, #vBoxSimilarBarca3, #vBoxSimilarBarca4, #vBoxSimilarBarca5 {
  -fx-background-color: vBoxColor;
  -fx-background-radius: 10px;
 }
 
-#vBoxSimilarProduct1:hover, #vBoxSimilarProduct2:hover, #vBoxSimilarProduct3:hover, #vBoxSimilarProduct4:hover, #vBoxSimilarProduct5:hover {
+#vBoxSimilarBarca1:hover, #vBoxSimilarBarca2:hover, #vBoxSimilarBarca3:hover, #vBoxSimilarBarca4:hover, #vBoxSimilarBarca5:hover {
   -fx-cursor: hand;
 }
 
@@ -336,18 +272,12 @@
  -fx-border-color: #585858;
 }
 
-#addToCartButton:hover, #addToWishlistButton:hover, #plusButton:hover, #lessButton:hover {
- -fx-background-color: purchaseButtonColorHover;
-}
-
-#addToCartButton: pressed, #addToWishlistButton: pressed, #plusButton: pressed, #lessButton: pressed{
+#prenotaButton: pressed, #addToWishlistButton: pressed{
  -fx-scale-x: 0.95;
  -fx-scale-y: 0.95;
 }
 
-
-
-                                                                                           /* FINE PRODUCT VIEW */
+                                                                                           /* FINE BARCA VIEW */
 
                                                                                            /* INIZIO WISHLIST */
 
@@ -360,18 +290,45 @@
   -fx-background-radius: 10px;
 }
 
-#wishlistPriceProd1, #wishlistPriceProd2, #wishlistPriceProd3, #wishlistPriceProd4, #wishlistPriceProd5, #wishlistPriceProd6, #wishlistTitleProd1, #wishlistTitleProd2, #wishlistTitleProd3, #wishlistTitleProd4, #wishlistTitleProd5, #wishlistTitleProd6, #wishlistImage1, #wishlistImage2, #wishlistImage3, #wishlistImage4, #wishlistImage5, #wishlistImage6{
+#wishlistPriceBar1, #wishlistPriceBar2, #wishlistPriceBar3, #wishlistPriceBar4, #wishlistPriceBar5, #wishlistPriceBar6, #wishlistTitleBar1, #wishlistTitleBar2, #wishlistTitleBar3, #wishlistTitleBar4, #wishlistTitleBar5, #wishlistTitleBar6, #wishlistImage1, #wishlistImage2, #wishlistImage3, #wishlistImage4, #wishlistImage5, #wishlistImage6{
  -fx-font-size: 30px;
  -fx-cursor: hand;
 }
 
-#wishlistRemoveButton1, #wishlistRemoveButton2, #wishlistRemoveButton3, #wishlistRemoveButton4, #wishlistRemoveButton5, #wishlistRemoveButton6, #wishlistAddCartButton1, #wishlistAddCartButton2, #wishlistAddCartButton3, #wishlistAddCartButton4, #wishlistAddCartButton5, #wishlistAddCartButton6{
+#wishlistRemoveButton1, #wishlistRemoveButton2, #wishlistRemoveButton3, #wishlistRemoveButton4, #wishlistRemoveButton5, #wishlistRemoveButton6 {
  -fx-font-size: 12px;
  -fx-cursor: hand;
 }
 
-
                                                                                            /* FINE WISHLIST */
+
+                                                                                            /* INIZIO PRENOTAZIONE */
+
+#vBoxPrenotazioni {
+    -fx-background-color: backgroundColor;
+}
+
+#hBox1, #hBox2, #hBox3, #hBox4, #hBox5, #hBox6 {
+    -fx-background-color: boxColor;
+    -fx-background-radius: 10px;
+}
+
+#prenotazioniRemoveButton1, #prenotazioniRemoveButton2, #prenotazioniRemoveButton3, #prenotazioniRemoveButton4, #prenotazioniRemoveButton5, #prenotazioniRemoveButton6 {
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+
+#prenotazioniTitleBar1, #prenotazioniTitleBar2, #prenotazioniTitleBar3, #prenotazioniTitleBar4, #prenotazioniTitleBar5, #prenotazioniTitleBar6{
+    -fx-font-size: 30px;
+}
+
+#dataPrenotazione1, #dataPrenotazione2, #dataPrenotazione3, #dataPrenotazione4, #dataPrenotazione5, #dataPrenotazione6, #prenotazioniGiornoBar1, #prenotazioniGiornoBar2, #prenotazioniGiornoBar3, #prenotazioniGiornoBar4, #prenotazioniGiornoBar5,  #prenotazioniGiornoBar6, #trattino1Bar1, #trattino1Bar2, #trattino1Bar3, #trattino1Bar4, #trattino1Bar5, #trattino1Bar6, #trattino2Bar1, #trattino2Bar2, #trattino2Bar3, #trattino2Bar4, #trattino2Bar5, #trattino2Bar6, #prenotazioniMeseBar1, #prenotazioniMeseBar2, #prenotazioniMeseBar3, #prenotazioniMeseBar4, #prenotazioniMeseBar5,  #prenotazioniMeseBar6, #prenotazioniAnnoBar1, #prenotazioniAnnoBar2, #prenotazioniAnnoBar3, #prenotazioniAnnoBar4, #prenotazioniAnnoBar5,  #prenotazioniAnnoBar6, #utentePrenotatoBar1, #utentePrenotatoBar2, #utentePrenotatoBar3, #utentePrenotatoBar4, #utentePrenotatoBar5, #utentePrenotatoBar5, #utentePrenotatoBar6 {
+    -fx-font-size: 17px;
+}
+
+
+
+                                                                                            /* FINE PRENOTAZIONE */
 
                                                                                            /* INIZIO ACCOUNT */
 
@@ -379,28 +336,16 @@
  -fx-background-color: backgroundColor;
 }
 
-#changePasswordText, #changePasswordButton, #sendReportButton, #sendReportText{
+#changePasswordText, #changePasswordButton, #nameText1, #nameText2, #surnameText1, #surnameText2, #aggiungiunabarcaText, #inserisciFotoBarca, #aggiungiBarcaButton {
  -fx-font-size: 14px;
 }
 
-#myOrderText, #addressText1, #addressText2, #balanceText1, #balanceText2, #nameText1, #nameText2, #surnameText1, #surnameText2 {
- -fx-font-size: 20px;
-}
-
-#changePasswordButton, #sendReportButton {
+#changePasswordButton, #categoriaBarcaBox, #inserisciFotoBarca, #aggiungiBarcaButton, #inserisciFotoBarca, #aggiungiBarcaButton {
  -fx-cursor: hand;
 }
 
 #alertPasswordText {
  -fx-fill: #ff0000;
-}
-
-#orderNumber1, #orderNumber2, #orderNumber3, #orderNumber4, #orderNumber5, #orderNumber6, #orderPrice1, #orderPrice2, #orderPrice3, #orderPrice4, #orderPrice5, #orderPrice6 {
- -fx-font-size: 18px;
-}
-
-#orderText1, #orderText2, #orderText3, #orderText4, #orderText5, #orderText6 {
- -fx-font-size: 16px;
 }
 
 #vBox1, #vBox2, #vBox3, #vBox4, #vBox5, #vBox6 {
