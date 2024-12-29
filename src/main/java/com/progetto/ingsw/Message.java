@@ -2,16 +2,25 @@ package com.progetto.ingsw;
 
 public class Message {
     public final static String login_error = "";
+    public final static String login_effettuato = "Accesso effettuato con successo! Benvenuto/a, ";
     public final static String returnHome_error = "Errore nel ritorno alla home";
     public final static String recovery_password_error = "Errore nel caricamento della pagina recupero password";
     public final static String load_page_error = "Errore nel caricamento della pagina";
     public final static String wishlist_error = "Errore wishlist";
+    public final static String aggiunta_alla_wishlist_ok = "La barca è stata aggiunta alla tua wishlist con successo!";
+    public final static String aggiunta_alla_wishlist_no = "Non è stato possibile aggiungere la barca alla wishlist";
+    public final static String rimozione_wishlist_ok = "La barca è stata rimossa dalla wishlist con successo";
+    public final static String rimozione_wishlist_no = "Errore durante la rimozione della barca dalla wishlist";
     public final static String prenotazioni_error = "Errore prenotazioni";
+    public final static String rimozione_prenotazione_ok = "La prenotazione è stata rimossa con successo!";
+    public final static String rimozione_prenotazione_no = "Errore durante la rimozione della prenotazione";
     public final static String box_page_error = "Errore box page";
     public final static String not_logged_in_error = "Effettuare il login prima di accedere a questa sezione!";
     public final static String privacy_information_error = "Errore nell'apertura di informazioni sulla privacy";
     public final static String general_condition_error = "Errore nell'apertura delle condizioni generali di uso e vendita";
     public final static String add_home_page_barche_error = "Errore nell'aggiunta delle barche alla home";
+    public final static String registrazione_completata = "La tua registrazione è stata completata con successo! Puoi ora effettuare il login";
+    public final static String errore_di_registrazione = "Dati non validi. Verifica i campi e riprova";
     public final static String registration_field_empty_error = "Compilare tutti i campi per proseguire con la registrazione";
     public final static String registration_email_error = "Inserire un email valida";
     public final static String registration_password_error = "Le password inserite non coincidono";

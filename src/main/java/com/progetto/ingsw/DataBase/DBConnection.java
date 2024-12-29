@@ -6,9 +6,12 @@ import com.progetto.ingsw.Model.Prenotazione;
 import com.progetto.ingsw.Model.User;
 import com.progetto.ingsw.View.SceneHandler;
 import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
@@ -336,38 +339,38 @@ public class DBConnection {
     }
 
 
-    public void insertWishlistBarcaIntoDB(String email, String id_barca) {
-        executorService.submit(createDaemonThread(() -> {
-            try {
-                CompletableFuture<ArrayList<Barca>> future = getWishlist(email);
-                ArrayList<Barca> nBar = future.get(10, TimeUnit.SECONDS);
-                boolean find = false;
-                for (Barca id : nBar) {
-                    if (id.id().equals(id_barca)) {
-                        find = true;
-                    }
-                }
-                if (nBar.size() < 6 && !find) {
-                    if (con == null || con.isClosed())
-                        return;
-                    PreparedStatement stmt = con.prepareStatement("INSERT INTO wishlist VALUES(?, ?);");
-                    stmt.setString(1, email);
-                    stmt.setString(2, id_barca);
-                    stmt.execute();
-                    stmt.close();
-                }
+    public boolean insertWishlistBarcaIntoDB(String email, String id_barca) {
+        try {
+            CompletableFuture<ArrayList<Barca>> future = getWishlist(email);
+            ArrayList<Barca> nBar = future.get(10, TimeUnit.SECONDS);
 
-                if (nBar.size() >= 6) {
-                    Platform.runLater(() -> SceneHandler.getInstance().showAlert("Attenzione", Message.add_wishlist_max_information, 1));
-
+            boolean find = false;
+            for (Barca id : nBar) {
+                if (id.id().equals(id_barca)) {
+                    find = true;
                 }
-                if (find) {
-                    Platform.runLater(() -> SceneHandler.getInstance().showAlert("Attenzione", Message.add_wishlist_find_information, 1));
-                }
-            } catch (SQLException | ExecutionException | InterruptedException | TimeoutException e) {
-                SceneHandler.getInstance().showAlert("Errore thread", Message.thread_error, 0);
             }
-        }));
+
+            if (nBar.size() < 6 && !find) {
+                if (con == null || con.isClosed())
+                    return false;
+
+                PreparedStatement stmt = con.prepareStatement("INSERT INTO wishlist VALUES(?, ?);");
+                stmt.setString(1, email);
+                stmt.setString(2, id_barca);
+                stmt.execute();
+                stmt.close();
+                return true;
+            }
+
+            if (nBar.size() >= 6 || find) {
+                return false;
+            }
+        } catch (SQLException | ExecutionException | InterruptedException | TimeoutException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
     }
 
     public CompletableFuture<ArrayList<Prenotazione>> getPrenotazione(String email) {
@@ -438,27 +441,30 @@ public class DBConnection {
                 for (Prenotazione id : nPre) {
                     if (id.id_barca().equals(id_barca)) {
                         find = true;
+                        break;
                     }
                 }
-                if (nPre.size() < 6 && !find) {
+
+                if (find) {
+                    Platform.runLater(() -> SceneHandler.getInstance().showAlert("Attenzione", Message.add_prenotazioni_find_information, 1));
+                    return;
+                }
+
+                if (nPre.size() < 6) {
                     if (con == null || con.isClosed())
                         return;
                     PreparedStatement stmt = con.prepareStatement("INSERT INTO prenotazioni VALUES(?, ?, ?, ?, ?);");
                     stmt.setString(1, email);
                     stmt.setString(2, id_barca);
-                    stmt.setInt(3,giorno);
-                    stmt.setInt(4,mese);
-                    stmt.setInt(5,anno);
+                    stmt.setInt(3, giorno);
+                    stmt.setInt(4, mese);
+                    stmt.setInt(5, anno);
                     stmt.execute();
                     stmt.close();
-                }
 
-                if (nPre.size() >= 6) {
+                    Platform.runLater(() -> SceneHandler.getInstance().showAlert("Conferma", Message.conferma_prenotazione + LocalDate.of(anno, mese, giorno), 1));
+                } else {
                     Platform.runLater(() -> SceneHandler.getInstance().showAlert("Attenzione", Message.add_prenotazioni_max_information, 1));
-
-                }
-                if (find) {
-                    Platform.runLater(() -> SceneHandler.getInstance().showAlert("Attenzione", Message.add_prenotazioni_find_information, 1));
                 }
             } catch (SQLException | ExecutionException | InterruptedException | TimeoutException e) {
                 SceneHandler.getInstance().showAlert("Errore thread", Message.thread_error, 0);
@@ -525,7 +531,6 @@ public class DBConnection {
                 return false;
             }
 
-            // Prepara la query SQL per inserire una nuova barca
             PreparedStatement stmt = con.prepareStatement("INSERT INTO barche (id, nome, prezzo, descrizione, categoria, chiavi) VALUES (?, ?, ?, ?, ?, ?);");
             stmt.setString(1, idBarca);
             stmt.setString(2, nomeBarca);
@@ -534,16 +539,58 @@ public class DBConnection {
             stmt.setString(5, categoriaBarca);
             stmt.setString(6, chiaviBarca);
 
-            // Esegui la query
             stmt.execute();
             stmt.close();
 
-            // Mostra un messaggio di successo
             Platform.runLater(() -> SceneHandler.getInstance().showAlert("Operazione riuscita", "Barca aggiunta con successo.", 1));
             return true;
         } catch (SQLException e) {
-            // Gestione degli errori SQL
             Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore Database", "Impossibile aggiungere la barca: " + e.getMessage(), 0));
+            return false;
+        }
+    }
+
+    public boolean rimuoviBarca(String idBarca) {
+        try {
+            if (con == null || con.isClosed()) {
+                Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore Database", "Connessione al database non disponibile.", 0));
+                return false;
+            }
+
+            // Alert di conferma
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Conferma rimozione");
+                alert.setHeaderText("Sei sicuro di voler rimuovere la barca?");
+                alert.setContentText("ID Barca: " + idBarca);
+
+                // Se l'utente preme "Sì", esegui la rimozione
+                alert.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.YES) {
+                        try {
+                            PreparedStatement stmt = con.prepareStatement("DELETE FROM barche WHERE id = ?;");
+                            stmt.setString(1, idBarca);
+
+                            int rowsAffected = stmt.executeUpdate();
+                            stmt.close();
+
+                            if (rowsAffected > 0) {
+                                Platform.runLater(() -> SceneHandler.getInstance().showAlert("Operazione riuscita", "Barca rimossa con successo.", 1));
+                            } else {
+                                Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore", "Nessuna barca trovata con l'ID fornito.", 0));
+                            }
+                        } catch (SQLException e) {
+                            Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore Database", "Impossibile rimuovere la barca: " + e.getMessage(), 0));
+                        }
+                    } else {
+                        Platform.runLater(() -> SceneHandler.getInstance().showAlert("Operazione annullata", "La rimozione della barca è stata annullata.", 0));
+                    }
+                });
+            });
+
+            return true;
+        } catch (SQLException e) {
+            Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore Database", "Impossibile rimuovere la barca: " + e.getMessage(), 0));
             return false;
         }
     }

@@ -11,6 +11,7 @@ import com.progetto.ingsw.View.SceneHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -54,7 +55,14 @@ public class BarcaViewController {
         if (user != null){
             String email = user.email();
             String id_bar = BarcaHandler.getInstance().getBarca().id();
-            DBConnection.getInstance().insertWishlistBarcaIntoDB(email, id_bar);
+            boolean success = DBConnection.getInstance().insertWishlistBarcaIntoDB(email, id_bar);
+
+            if(success){
+                SceneHandler.getInstance().showAlert("Conferma", Message.aggiunta_alla_wishlist_ok, 1);
+            }
+            else {
+                SceneHandler.getInstance().showAlert("Errore", Message.aggiunta_alla_wishlist_no, 0);
+            }
         }else{
             SceneHandler.getInstance().showAlert("Error", Message.not_logged_in_error,0);
         }
@@ -115,26 +123,12 @@ public class BarcaViewController {
     }
 
     void populateComboBoxes() {
-        // Popola il ComboBox dei giorni con valori da 1 a 31
         giornoButton.getItems().addAll((Integer[]) IntStream.rangeClosed(1, 31).boxed().toArray(Integer[]::new));
 
-        // Popola il ComboBox dei mesi con valori da 1 a 12
         meseButton.getItems().addAll((Integer[]) IntStream.rangeClosed(1, 12).boxed().toArray(Integer[]::new));
 
-        // Popola il ComboBox degli anni con i valori 2024 e 2025
         annoButton.getItems().addAll(2024, 2025);
     }
-
-
-
-    /*
-    void checkPrenotazione(){
-        String id_bar = BarcaHandler.getInstance().getBarca().id();
-        if(DBConnection.getInstance().checkPrenotazione(id_bar)) {
-            prenotaButton.setDisable(true);
-            prenotaButton.setText("Prenotazione già effettuata");
-        }
-     */
 
     @FXML
     void prenotaButtonAction(ActionEvent event) {
@@ -156,21 +150,17 @@ public class BarcaViewController {
             }
 
             User user = Authentication.getInstance().getUser();
-            if (user != null){
+            if (user != null) {
                 String email = user.email();
                 String id_bar = BarcaHandler.getInstance().getBarca().id();
                 DBConnection.getInstance().insertPrenotazioneIntoDB(email, id_bar, giorno, mese, anno);
-                SceneHandler.getInstance().showAlert("Conferma", Message.conferma_prenotazione + dataPrenotazione, 1);
-            }else{
-                SceneHandler.getInstance().showAlert("Error", Message.not_logged_in_error,0);
+            } else {
+                SceneHandler.getInstance().showAlert("Error", Message.not_logged_in_error, 0);
             }
         } catch (DateTimeException e) {
-            // La data non è valida (ad esempio, 30 febbraio)
             SceneHandler.getInstance().showAlert("Errore", Message.data_error3, 0);
         }
     }
-
-
 
     @FXML
     void initialize(){
@@ -178,7 +168,6 @@ public class BarcaViewController {
         loadBarca();
         loadSimilarBarche();
         populateComboBoxes();
-        //checkPrenotazione();
     }
 
 }

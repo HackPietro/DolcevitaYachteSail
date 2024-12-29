@@ -53,10 +53,8 @@ public class BoxPageController {
         priceArray = new Text[]{priceText1, priceText2, priceText3, priceText4, priceText5, priceText6, priceText7, priceText8, priceText9, priceText10, priceText11, priceText12, priceText13, priceText14, priceText15};
         vBoxes = new VBox[]{vBoxBarca1, vBoxBarca2, vBoxBarca3, vBoxBarca4, vBoxBarca5, vBoxBarca6, vBoxBarca7, vBoxBarca8, vBoxBarca9, vBoxBarca10, vBoxBarca11, vBoxBarca12, vBoxBarca13, vBoxBarca14, vBoxBarca15, totalBox};
 
-        // Lista che conterrà i clone degli oggetti BarcaItem
         barcaItems = new ArrayList<>();
         for (int i = 0; i < 15; i++) {
-            // Cloniamo l'oggetto BarcaItem per ogni elemento
             BarcaItem clonedBarcaItem = (BarcaItem) new BarcaItem(barcaImages[i], titleTextArray[i], priceArray[i], vBoxes[i]).clone();
             barcaItems.add(clonedBarcaItem);
         }
@@ -84,7 +82,7 @@ public class BoxPageController {
             }
             Collections.shuffle(randomNumber);
             for (int i = 0; i < 15; i++) {
-                BarcaItem barcaItem = (BarcaItem) barcaItems.get(i); // Otteniamo il clone
+                BarcaItem barcaItem = (BarcaItem) barcaItems.get(i);
                 Barca barca = barche.get(randomNumber.get(i));
 
                 barcaItem.updateDetails(barca);

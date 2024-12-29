@@ -44,7 +44,11 @@ public class RegistrationController {
         if (valid){
             String encryptedPassword = DBConnection.getInstance().encryptedPassword(passwordField.getText());
             DBConnection.getInstance().insertUsers(nameField.getText(), surnameField.getText(), emailField.getText(), encryptedPassword, false);
+            SceneHandler.getInstance().showAlert("Registrazione completata", Message.registrazione_completata, 1);
             SceneHandler.getInstance().setLoginScene();
+        }
+        else {
+            SceneHandler.getInstance().showAlert("Errore di registrazione", Message.errore_di_registrazione, 0);
         }
     }
 

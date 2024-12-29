@@ -55,6 +55,7 @@ public class LoginController {
             CompletableFuture<User> future1 = DBConnection.getInstance().setUser(emailField.getText());
             User user = future1.get(10, TimeUnit.SECONDS);
             Authentication.getInstance().login(user);
+            SceneHandler.getInstance().showAlert("Login Effettuato", Message.login_effettuato + user.name(), 1);
             SceneHandler.getInstance().setHomeScene();
         } catch (SQLException | InterruptedException | TimeoutException | ExecutionException e){
             wrongLoginText.setVisible(true);

@@ -18,7 +18,7 @@
    <children>
       <VBox fx:id="vBoxAccount" layoutY="2.0" prefHeight="353.0" prefWidth="1370.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text fill="#ff9900" strokeType="OUTSIDE" strokeWidth="0.0" text="Il tuo account:" wrappingWidth="363.13671875">
+            <Text fill="#ff9900" strokeType="OUTSIDE" strokeWidth="0.0" text="Il mio account:" wrappingWidth="363.13671875">
                <font>
                   <Font size="30.0" />
                </font>
@@ -108,14 +108,14 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <TextField fx:id="idBarcaText" layoutX="10.0" layoutY="44.0" promptText="Inserisci il nome della barca" />
+                                    <TextField fx:id="idBarcaText" layoutX="10.0" layoutY="44.0" promptText="Inserisci l'id della barca (se vuoi rimuoverla popola solo questo campo)" />
                                     <TextField fx:id="nomeBarcaText" promptText="Inserisci il nome della barca" />
                                     <TextField fx:id="prezzoBarcaText" layoutX="10.0" layoutY="62.0" promptText="Inserisci il prezzo di vendita" />
                                     <TextArea fx:id="descrizioneBarcaArea" prefHeight="105.0" prefWidth="658.0" promptText="Descrivi brevemente la barca" />
                                     <ComboBox fx:id="categoriaBarcaBox" prefHeight="26.0" prefWidth="714.0" promptText="Scegli la categoria" />
                                     <TextArea fx:id="chiaviBarcaArea" prefHeight="105.0" prefWidth="658.0" promptText="Inserisci delle chiavi di ricerca" />
                                     <Button fx:id="inserisciFotoBarca" mnemonicParsing="false" onAction="#inserisciFotoBarcaAction" prefHeight="30.0" prefWidth="128.0" text="Scegli foto" />
-                                    <Button fx:id="aggiungiBarcaButton" mnemonicParsing="false" onAction="#aggiungiBarcaButton1Action" prefHeight="30.0" prefWidth="128.0" text="Aggiungi" textAlignment="CENTER" />
+                                    <Button fx:id="aggiungiBarcaButton" mnemonicParsing="false" onAction="#aggiungiBarcaButtonAction" prefHeight="30.0" prefWidth="128.0" text="Procedi" textAlignment="CENTER" />
                                  </children>
                               </VBox>
                            </children>

@@ -67,16 +67,14 @@ public class CategoryBoxController {
 
     void addBarca(ArrayList<Barca> barche){
         for (int i = 0; i < barche.size(); i++){
-            // Verifica che l'indice non superi la dimensione degli array
             if (i < barcaImagesArray.length) {
                 String imagePath = "src/main/resources/com/progetto/ingsw/immagini/" + barche.get(i).id() + ".jpg";
                 File imageFile = new File(imagePath);
 
                 if (imageFile.exists()) {
-                    Image image = new Image(imageFile.toURI().toString()); // Percorso assoluto
+                    Image image = new Image(imageFile.toURI().toString());
                     barcaImagesArray[i].setImage(image);
                 } else {
-                    // Immagine di default in caso non esista ancora
                     Image defaultImage = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("immagini/default.jpg")));
                     barcaImagesArray[i].setImage(defaultImage);
                 }

@@ -2,7 +2,9 @@ package com.progetto.ingsw.Controller;
 
 import com.progetto.ingsw.DataBase.DBConnection;
 import com.progetto.ingsw.MainApplication;
+import com.progetto.ingsw.Message;
 import com.progetto.ingsw.Model.Barca;
+import com.progetto.ingsw.View.SceneHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -59,13 +61,20 @@ public class WishlistController {
         loadWishlist(email);
     }
 
-    void removeItem(String id, String email) throws Exception {
-        for (int i = 0; i < 6; i++){
-            hBoxes[i].setVisible(false);
+    void removeItem(String id, String email) {
+        try {
+            for (int i = 0; i < 6; i++) {
+                hBoxes[i].setVisible(false);
+            }
+            DBConnection.getInstance().removeSelectedWishlistItem(id, email);
+            initialize();
+            SceneHandler.getInstance().showAlert("Conferma", Message.rimozione_wishlist_ok, 1);
+        } catch (Exception e) {
+            SceneHandler.getInstance().showAlert("Error", Message.rimozione_wishlist_no, 0);
+            e.printStackTrace(); // Per il log dell'errore
         }
-        DBConnection.getInstance().removeSelectedWishlistItem(id, email);
-        initialize();
     }
+
 
     void loadWishlist(String email) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<ArrayList<Barca>> future = DBConnection.getInstance().getWishlist(email);
