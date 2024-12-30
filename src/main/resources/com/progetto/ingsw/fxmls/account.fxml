@@ -103,7 +103,7 @@
                            <children>
                               <VBox fx:id="aggiungiBarcaVBox" alignment="CENTER" prefHeight="170.0" prefWidth="320.0" spacing="15.0">
                                  <children>
-                                    <Text fx:id="aggiungiunabarcaText" strokeType="OUTSIDE" strokeWidth="0.0" text="Aggiungi una barca" textAlignment="CENTER" wrappingWidth="133.97576904296875">
+                                    <Text fx:id="aggiungiunabarcaText" strokeType="OUTSIDE" strokeWidth="0.0" text="Aggiungi/Rimuovi una barca" textAlignment="CENTER" wrappingWidth="180.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
