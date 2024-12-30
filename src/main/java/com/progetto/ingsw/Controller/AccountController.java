@@ -214,14 +214,15 @@ public class AccountController {
         );
 
         if (success) {
+            String imagePath = "src/main/resources/com/progetto/ingsw/immagini/" + idBarca + ".jpg";
+            File outputImageFile = new File(imagePath);
+
             try {
-                Files.copy(temporaryImageFile.toPath(), outputFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(temporaryImageFile.toPath(), outputImageFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
                 SceneHandler.getInstance().showAlert("Errore", "La barca è stata aggiunta, ma il salvataggio dell'immagine è fallito: " + e.getMessage(), 0);
                 return;
             }
-
-            SceneHandler.getInstance().showAlert("Operazione riuscita", "La barca è stata aggiunta con successo.", 1);
 
             idBarcaText.clear();
             nomeBarcaText.clear();
