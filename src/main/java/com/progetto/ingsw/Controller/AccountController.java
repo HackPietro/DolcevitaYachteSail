@@ -127,13 +127,6 @@ public class AccountController {
                     return;
                 }
 
-                String outputPath = "src/main/resources/com/progetto/ingsw/immagini/" + selectedFile.getName();
-                File outputFile = new File(outputPath);
-                if (outputFile.exists()) {
-                    SceneHandler.getInstance().showAlert("Errore", "Esiste già una barca con questo id. Inserisci un nuovo ID per la barca e carica nuovamente l'immagine.", 0);
-                    return;
-                }
-
                 temporaryImageFile = selectedFile;
                 SceneHandler.getInstance().showAlert("Successo", "Immagine caricata correttamente. Sarà salvata al momento dell'aggiunta della barca.", 1);
 
@@ -154,6 +147,7 @@ public class AccountController {
         String chiaviBarca = chiaviBarcaArea.getText().trim();
         String prezzoBarcaStr = prezzoBarcaText.getText().trim();
 
+        // Validazione per rimuovere una barca
         if (!idBarca.isEmpty() && nomeBarca.isEmpty() && categoriaBarca == null && descrizioneBarca.isEmpty() &&
                 chiaviBarca.isEmpty() && prezzoBarcaStr.isEmpty()) {
 
@@ -163,14 +157,12 @@ public class AccountController {
                 String imagePath = "src/main/resources/com/progetto/ingsw/immagini/" + idBarca + ".jpg";
                 File imageFile = new File(imagePath);
                 if (imageFile.exists()) {
-                    boolean imageDeleted = imageFile.delete();
-                    if (!imageDeleted) {
+                    try {
+                        Files.delete(imageFile.toPath());
+                    } catch (IOException e) {
                         SceneHandler.getInstance().showAlert("Errore", "La barca è stata rimossa, ma non è stato possibile rimuovere l'immagine.", 0);
                     }
                 }
-
-                SceneHandler.getInstance().showAlert("Operazione riuscita", "La barca è stata rimossa con successo.", 1);
-
                 idBarcaText.clear();
                 nomeBarcaText.clear();
                 categoriaBarcaBox.getSelectionModel().clearSelection();
@@ -183,12 +175,14 @@ public class AccountController {
             return;
         }
 
+        // Validazione dei campi obbligatori
         if (idBarca.isEmpty() || nomeBarca.isEmpty() || categoriaBarca == null || descrizioneBarca.isEmpty() ||
                 chiaviBarca.isEmpty() || prezzoBarcaStr.isEmpty()) {
             SceneHandler.getInstance().showAlert("Errore di validazione", "Tutti i campi sono obbligatori.", 0);
             return;
         }
 
+        // Conversione del prezzo a double
         double prezzoBarca;
         try {
             prezzoBarca = Double.parseDouble(prezzoBarcaStr);
@@ -200,24 +194,26 @@ public class AccountController {
             return;
         }
 
+        // Controllo dell'immagine temporanea
         if (temporaryImageFile == null) {
             SceneHandler.getInstance().showAlert("Errore", "Devi caricare un'immagine prima di aggiungere la barca.", 0);
             return;
         }
 
+        // Verifica se esiste già un'immagine con lo stesso ID
+        String outputPath = "src/main/resources/com/progetto/ingsw/immagini/" + idBarca + ".jpg";
+        File outputFile = new File(outputPath);
+        if (outputFile.exists()) {
+            SceneHandler.getInstance().showAlert("Errore", "Esiste già un'immagine associata a questo ID. Inserisci un nuovo ID o rimuovi la barca esistente.", 0);
+            return;
+        }
+
+        // Aggiunta della barca al database
         boolean success = DBConnection.getInstance().aggiungiBarca(
                 idBarca, nomeBarca, categoriaBarca, descrizioneBarca, chiaviBarca, prezzoBarca
         );
 
         if (success) {
-            String outputPath = "src/main/resources/com/progetto/ingsw/immagini/" + idBarca + ".jpg";
-            File outputFile = new File(outputPath);
-
-            if (outputFile.exists()) {
-                SceneHandler.getInstance().showAlert("Errore", "Esiste già un'immagine per questa barca. Inserisci un nuovo ID e ricarica l'immagine.", 0);
-                return;
-            }
-
             try {
                 Files.copy(temporaryImageFile.toPath(), outputFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
@@ -238,7 +234,6 @@ public class AccountController {
             SceneHandler.getInstance().showAlert("Errore", "C'è stato un problema durante l'aggiunta della barca.", 0);
         }
     }
-
 
 }
 

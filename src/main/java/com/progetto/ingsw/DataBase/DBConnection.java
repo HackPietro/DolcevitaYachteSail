@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.concurrent.*;
 
 public class DBConnection {
@@ -135,7 +136,7 @@ public class DBConnection {
                     ResultSet rs = stmt.executeQuery();
 
                     while (rs.next()) {
-                        Barca b = new Barca(rs.getString("id"), rs.getString("nome"), rs.getString("descrizione"), rs.getString("prezzo"), rs.getString("categoria"));
+                        Barca b = new Barca(rs.getString("id"), rs.getString("nome"), rs.getString("descrizione"), rs.getDouble("prezzo"), rs.getString("categoria"));
                         barche.add(b);
                     }
                     future.complete(barche);
@@ -159,7 +160,7 @@ public class DBConnection {
                     ResultSet rs = stmt.executeQuery();
 
                     while (rs.next()) {
-                        Barca b = new Barca(rs.getString("id"), rs.getString("nome"), rs.getString("descrizione"), rs.getString("prezzo"), rs.getString("categoria"));
+                        Barca b = new Barca(rs.getString("id"), rs.getString("nome"), rs.getString("descrizione"), rs.getDouble("prezzo"), rs.getString("categoria"));
                         categoryBarche.add(b);
                     }
                 }
@@ -214,7 +215,7 @@ public class DBConnection {
                     ResultSet rs = stmt.executeQuery();
 
                     if (rs.next()) {
-                        barca = new Barca(rs.getString("id"), rs.getString("nome"), rs.getString("descrizione"), rs.getString("prezzo"), rs.getString("categoria"));
+                        barca = new Barca(rs.getString("id"), rs.getString("nome"), rs.getString("descrizione"), rs.getDouble("prezzo"), rs.getString("categoria"));
                         future.complete(barca);
                     }
                 }
@@ -238,7 +239,7 @@ public class DBConnection {
 
                     while (rs.next() && similarBarche.size() < 5) {
                         if (!rs.getString("id").equals(id)) {
-                            barca = new Barca(rs.getString("id"), rs.getString("nome"), rs.getString("descrizione"), rs.getString("prezzo"), rs.getString("categoria"));
+                            barca = new Barca(rs.getString("id"), rs.getString("nome"), rs.getString("descrizione"), rs.getDouble("prezzo"), rs.getString("categoria"));
                             similarBarche.add(barca);
                         }
                     }
@@ -292,7 +293,7 @@ public class DBConnection {
                         ResultSet rs = stmt.executeQuery();
 
                         while (rs.next()) {
-                            Barca b = new Barca(rs.getString("id"), rs.getString("nome"), rs.getString("descrizione"), rs.getString("prezzo"), rs.getString("categoria"));
+                            Barca b = new Barca(rs.getString("id"), rs.getString("nome"), rs.getString("descrizione"), rs.getDouble("prezzo"), rs.getString("categoria"));
                             searchedBarche.add(b);
                         }
                     }
@@ -553,44 +554,51 @@ public class DBConnection {
     public boolean rimuoviBarca(String idBarca) {
         try {
             if (con == null || con.isClosed()) {
-                Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore Database", "Connessione al database non disponibile.", 0));
+                Platform.runLater(() ->
+                        SceneHandler.getInstance().showAlert("Errore Database", "Connessione al database non disponibile.", 0)
+                );
                 return false;
             }
 
-            // Alert di conferma
-            Platform.runLater(() -> {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Conferma rimozione");
-                alert.setHeaderText("Sei sicuro di voler rimuovere la barca?");
-                alert.setContentText("ID Barca: " + idBarca);
+            // Creazione dell'alert di conferma
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Conferma rimozione");
+            alert.setHeaderText("Sei sicuro di voler rimuovere la barca?");
+            alert.setContentText("ID Barca: " + idBarca);
 
-                // Se l'utente preme "Sì", esegui la rimozione
-                alert.showAndWait().ifPresent(response -> {
-                    if (response == ButtonType.YES) {
-                        try {
-                            PreparedStatement stmt = con.prepareStatement("DELETE FROM barche WHERE id = ?;");
-                            stmt.setString(1, idBarca);
+            // Mostra l'alert e attendi la risposta dell'utente
+            Optional<ButtonType> result = alert.showAndWait();
 
-                            int rowsAffected = stmt.executeUpdate();
-                            stmt.close();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // Esegui la rimozione della barca
+                PreparedStatement stmt = con.prepareStatement("DELETE FROM barche WHERE id = ?;");
+                stmt.setString(1, idBarca);
 
-                            if (rowsAffected > 0) {
-                                Platform.runLater(() -> SceneHandler.getInstance().showAlert("Operazione riuscita", "Barca rimossa con successo.", 1));
-                            } else {
-                                Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore", "Nessuna barca trovata con l'ID fornito.", 0));
-                            }
-                        } catch (SQLException e) {
-                            Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore Database", "Impossibile rimuovere la barca: " + e.getMessage(), 0));
-                        }
-                    } else {
-                        Platform.runLater(() -> SceneHandler.getInstance().showAlert("Operazione annullata", "La rimozione della barca è stata annullata.", 0));
-                    }
-                });
-            });
+                int rowsAffected = stmt.executeUpdate();
+                stmt.close();
 
-            return true;
+                if (rowsAffected > 0) {
+                    Platform.runLater(() ->
+                            SceneHandler.getInstance().showAlert("Operazione riuscita", "Barca rimossa con successo.", 1)
+                    );
+                    return true;
+                } else {
+                    Platform.runLater(() ->
+                            SceneHandler.getInstance().showAlert("Errore", "Nessuna barca trovata con l'ID fornito.", 0)
+                    );
+                    return false;
+                }
+            } else {
+                // L'utente ha annullato l'operazione
+                Platform.runLater(() ->
+                        SceneHandler.getInstance().showAlert("Operazione annullata", "La rimozione della barca è stata annullata.", 0)
+                );
+                return false;
+            }
         } catch (SQLException e) {
-            Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore Database", "Impossibile rimuovere la barca: " + e.getMessage(), 0));
+            Platform.runLater(() ->
+                    SceneHandler.getInstance().showAlert("Errore Database", "Impossibile rimuovere la barca: " + e.getMessage(), 0)
+            );
             return false;
         }
     }
