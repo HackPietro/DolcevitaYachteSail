@@ -542,7 +542,7 @@ public class DBConnection {
             stmt.execute();
             stmt.close();
 
-            Platform.runLater(() -> SceneHandler.getInstance().showAlert("Operazione riuscita", "Barca aggiunta con successo.", 1));
+            Platform.runLater(() -> SceneHandler.getInstance().showAlert("Operazione riuscita", "Barca aggiunta con successo. L'annuncio completo della barca sarà visibile solo dopo il riavvio dell'applicazione.", 1));
             return true;
         } catch (SQLException e) {
             Platform.runLater(() -> SceneHandler.getInstance().showAlert("Errore Database", "Impossibile aggiungere la barca: " + e.getMessage(), 0));
@@ -574,6 +574,12 @@ public class DBConnection {
                 deletePrenotazioniStmt.setString(1, idBarca);
                 int prenotazioniEliminate = deletePrenotazioniStmt.executeUpdate();
                 deletePrenotazioniStmt.close();
+
+                // Rimuovi la barca dalle wishlist
+                PreparedStatement deleteWishlistStmt = con.prepareStatement("DELETE FROM wishlist WHERE id_barca = ?;");
+                deleteWishlistStmt.setString(1, idBarca);
+                int wishlistEliminate = deleteWishlistStmt.executeUpdate();
+                deleteWishlistStmt.close();
 
                 // Esegui la rimozione della barca
                 PreparedStatement deleteBarcaStmt = con.prepareStatement("DELETE FROM barche WHERE id = ?;");
