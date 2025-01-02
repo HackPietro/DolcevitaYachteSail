@@ -168,7 +168,17 @@ public class BarcaViewController {
         loadBarca();
         loadSimilarBarche();
         populateComboBoxes();
+
+        User user = Authentication.getInstance().getUser();
+        if (user != null && user.isAdmin()) {
+            annoButton.setVisible(false);
+            meseButton.setVisible(false);
+            giornoButton.setVisible(false);
+            prenotaButton.setVisible(false);
+            prenotaquiunavisitaText.setVisible(false);
+        }
     }
+
 
 }
 

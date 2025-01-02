@@ -490,7 +490,6 @@ public class DBConnection {
         }));
     }
 
-
     public void removeSelectedWishlistItem(String id, String email) {
         executorService.submit(createDaemonThread(() -> {
             try {
@@ -570,17 +569,26 @@ public class DBConnection {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                // Esegui la rimozione della barca
-                PreparedStatement stmt = con.prepareStatement("DELETE FROM barche WHERE id = ?;");
-                stmt.setString(1, idBarca);
+                // Rimuovi le prenotazioni associate alla barca
+                PreparedStatement deletePrenotazioniStmt = con.prepareStatement("DELETE FROM prenotazioni WHERE id_barca = ?;");
+                deletePrenotazioniStmt.setString(1, idBarca);
+                int prenotazioniEliminate = deletePrenotazioniStmt.executeUpdate();
+                deletePrenotazioniStmt.close();
 
-                int rowsAffected = stmt.executeUpdate();
-                stmt.close();
+                // Esegui la rimozione della barca
+                PreparedStatement deleteBarcaStmt = con.prepareStatement("DELETE FROM barche WHERE id = ?;");
+                deleteBarcaStmt.setString(1, idBarca);
+                int rowsAffected = deleteBarcaStmt.executeUpdate();
+                deleteBarcaStmt.close();
 
                 if (rowsAffected > 0) {
-                    Platform.runLater(() ->
-                            SceneHandler.getInstance().showAlert("Operazione riuscita", "Barca rimossa con successo.", 1)
-                    );
+                    Platform.runLater(() -> {
+                        String message = "Barca rimossa con successo.";
+                        if (prenotazioniEliminate > 0) {
+                            message += " Rimosse anche " + prenotazioniEliminate + " prenotazioni associate.";
+                        }
+                        SceneHandler.getInstance().showAlert("Operazione riuscita", message, 1);
+                    });
                     return true;
                 } else {
                     Platform.runLater(() ->

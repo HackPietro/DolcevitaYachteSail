@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.progetto.ingsw</groupId>
-    <artifactId>DolcevitaYachteSails</artifactId>
+    <artifactId>DolcevitaYachteSail</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>DolcevitaYachteSails</name>
+    <name>DolcevitaYachteSail</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -86,7 +86,7 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.progetto.ingsw.dolcevitayacht/DolcevitaYachteSails.MainApplication</mainClass>
+                            <mainClass>com.progetto.ingsw.dolcevitayacht/DolcevitaYachteSail.MainApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
