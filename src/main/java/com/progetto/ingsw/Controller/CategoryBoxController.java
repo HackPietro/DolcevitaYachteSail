@@ -20,6 +20,9 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class CategoryBoxController {
 
     @FXML
@@ -65,8 +68,10 @@ public class CategoryBoxController {
         }
     }
 
-    void addBarca(ArrayList<Barca> barche){
-        for (int i = 0; i < barche.size(); i++){
+    void addBarca(ArrayList<Barca> barche) {
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.ITALIAN);
+
+        for (int i = 0; i < barche.size(); i++) {
             if (i < barcaImagesArray.length) {
                 String imagePath = "src/main/resources/com/progetto/ingsw/immagini/" + barche.get(i).id() + ".jpg";
                 File imageFile = new File(imagePath);
@@ -80,7 +85,10 @@ public class CategoryBoxController {
                 }
 
                 titleTextArray[i].setText(barche.get(i).name());
-                priceArray[i].setText(barche.get(i).price() + "€");
+
+                // Formatta il prezzo
+                String formattedPrice = numberFormat.format(barche.get(i).price());
+                priceArray[i].setText(formattedPrice + "€");
 
                 String id = barche.get(i).id();
                 String category = barche.get(i).category();

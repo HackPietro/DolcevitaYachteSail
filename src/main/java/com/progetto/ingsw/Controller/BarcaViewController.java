@@ -22,10 +22,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
@@ -82,12 +84,16 @@ public class BarcaViewController {
 
     void loadBarca() {
         Barca b = BarcaHandler.getInstance().getBarca();
-        String url = "immagini/"+ b.id() + ".jpg";
+        String url = "immagini/" + b.id() + ".jpg";
         Image image = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream(url)));
         barcaImage.setImage(image);
         barcaField.setText(b.name());
         descriptionField.setText(b.description());
-        priceText.setText(b.price() + "€");
+
+        // Formatta il prezzo
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.ITALIAN);
+        String formattedPrice = numberFormat.format(b.price());
+        priceText.setText(formattedPrice + "€");
     }
 
 
@@ -114,13 +120,18 @@ public class BarcaViewController {
             Image image = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream(url)));
             imageViews[i].setImage(image);
             similarBarcaText[i].setText(barche.get(i).name());
-            priceTexts[i].setText(barche.get(i).price() + "€");
+
+            // Formatta il prezzo
+            NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.ITALIAN);
+            String formattedPrice = numberFormat.format(barche.get(i).price());
+            priceTexts[i].setText(formattedPrice + "€");
 
             String id = barche.get(i).id();
             String category = barche.get(i).category();
             similarBarcaVBox[i].setOnMouseClicked(event -> loadSimilarBarcaViewPage(id, category));
         }
     }
+
 
     void populateComboBoxes() {
         giornoButton.getItems().addAll((Integer[]) IntStream.rangeClosed(1, 31).boxed().toArray(Integer[]::new));

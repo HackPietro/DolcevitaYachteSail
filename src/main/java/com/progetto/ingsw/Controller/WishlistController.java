@@ -22,6 +22,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import com.progetto.ingsw.DataBase.Authentication;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class WishlistController {
     @FXML
@@ -61,20 +63,19 @@ public class WishlistController {
         loadWishlist(email);
     }
 
-    void removeItem(String id, String email) {
+    void removeItem(String id, String email) throws ExecutionException, InterruptedException, TimeoutException, SQLException {
         try {
             for (int i = 0; i < 6; i++) {
                 hBoxes[i].setVisible(false);
             }
             DBConnection.getInstance().removeSelectedWishlistItem(id, email);
-            initialize();
             SceneHandler.getInstance().showAlert("Conferma", Message.rimozione_wishlist_ok, 1);
         } catch (Exception e) {
             SceneHandler.getInstance().showAlert("Error", Message.rimozione_wishlist_no, 0);
             e.printStackTrace(); // Per il log dell'errore
         }
+        loadWishlist(email);
     }
-
 
     void loadWishlist(String email) throws ExecutionException, InterruptedException, TimeoutException {
         CompletableFuture<ArrayList<Barca>> future = DBConnection.getInstance().getWishlist(email);
@@ -84,7 +85,11 @@ public class WishlistController {
             Image image = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream(url)));
             imageViews[i].setImage(image);
             titleTextBar[i].setText(bar.get(i).name());
-            priceText[i].setText(bar.get(i).price() + "€");
+
+            // Formatta il prezzo
+            NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.ITALIAN);
+            String formattedPrice = numberFormat.format(bar.get(i).price());
+            priceText[i].setText(formattedPrice + "€");
 
             String id = bar.get(i).id();
             removeButtons[i].setOnMouseClicked(mouseEvent -> {
@@ -96,7 +101,6 @@ public class WishlistController {
             });
             hBoxes[i].setVisible(true);
         }
-
     }
 
     @FXML

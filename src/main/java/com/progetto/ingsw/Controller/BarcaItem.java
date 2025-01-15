@@ -7,6 +7,8 @@ import javafx.scene.text.Text;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Objects;
 
 class BarcaItem implements CloneableBarca {
@@ -32,8 +34,12 @@ class BarcaItem implements CloneableBarca {
         String url = "immagini/" + barca.id() + ".jpg";
         Image image = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream(url)));
         imageView.setImage(image);
+
+        // Formatta il prezzo
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.ITALIAN);
+        String formattedPrice = numberFormat.format(barca.price());
         titleText.setText(barca.name());
-        priceText.setText(barca.price() + "€");
+        priceText.setText(formattedPrice + "€");
     }
 
     public VBox getVBox() {

@@ -43,7 +43,9 @@ public class Validation {
         if (valid){
             Platform.runLater(() -> SceneHandler.getInstance().showAlert("Email non valida", Message.registration_email_exist_error, 0));
             CompletableFuture.completedFuture(false);
+            return CompletableFuture.completedFuture(true);
         }
+        SceneHandler.getInstance().showAlert("Registrazione completata", Message.registrazione_completata, 1);
         return CompletableFuture.completedFuture(true);
     }
 
