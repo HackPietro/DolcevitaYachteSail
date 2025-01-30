@@ -1,0 +1,1 @@
+Progetto universitario per il corso di Ingegneria del Software, focalizzato sull'applicazione dei pattern di programmazione. In particolare, sono stati utilizzati i design pattern Proxy e Prototype. Il progetto è stato sviluppato in Java, con un'interfaccia grafica implementata tramite CSS e FXML. È inclusa anche la stesura della documentazione.
